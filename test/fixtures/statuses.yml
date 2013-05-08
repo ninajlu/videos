@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  comment: MyText
+  completed: false
+  created: 2013-05-08 09:48:28
+  completed: 2013-05-08 09:48:28
+
+two:
+  type: 
+  comment: MyText
+  completed: false
+  created: 2013-05-08 09:48:28
+  completed: 2013-05-08 09:48:28

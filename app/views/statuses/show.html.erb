@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @status.type %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @status.comment %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @status.completed %>
+</p>
+
+<p>
+  <b>Time Completed:</b>
+  <%= @status.time_comp %>
+</p>
+
+<p>
+  <b>Video:</b>
+  <%= @status.video_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>
