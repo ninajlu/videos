@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
+  Video.includes(:statuses)
   def index
     @videos = Video.all
 
