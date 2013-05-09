@@ -1,4 +1,7 @@
 Videos::Application.routes.draw do
+  resources :kinds
+
+
   devise_for :users
 
   resources :videos

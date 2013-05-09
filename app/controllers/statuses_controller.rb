@@ -35,6 +35,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1/edit
   def edit
     @status = Status.find(params[:id])
+    
   end
 
   # POST /statuses
@@ -57,7 +58,6 @@ class StatusesController < ApplicationController
   # PUT /statuses/1.json
   def update
     @status = Status.find(params[:id])
-
     respond_to do |format|
       if @status.update_attributes(params[:status])
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
