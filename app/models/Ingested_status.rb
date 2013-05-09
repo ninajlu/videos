@@ -1,2 +1,0 @@
-class Injested < Status
-end

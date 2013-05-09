@@ -1,2 +1,0 @@
-class Web < Status
-end
