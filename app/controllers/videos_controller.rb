@@ -41,7 +41,7 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    @video = Video.new(params[:video])
+    @video = Video.includes(:statuses).new(params[:video])
     Kind.all.each do |f|
       @video.statuses.build(:kind =>f, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video=>@video, :video_id =>@video.id)
     end
