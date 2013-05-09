@@ -41,7 +41,8 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(params[:video])
-  @video.statuses.create(:type =>'Editing', :comment =>"", :time_comp => nil, :completed =>false, :video=>@video, :video_id =>@video.id)
+    @kinds.each do |f|
+  @video.statuses.create(:kind =>f.name, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video=>@video, :video_id =>@video.id)
 
     respond_to do |format|
       if @video.save

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.select :type, ["PreComments","Ingested","Editing","Encoded", "QA", "Web"] %>
+    <%= f.label :kind %><br />
+    <%= f.collection_select :kind_id, Kind.all, :id, :name%>
   </div>
   <div class="field">
     <%= f.label :comment %><br />
