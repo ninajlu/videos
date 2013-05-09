@@ -5,4 +5,15 @@ class Status < ActiveRecord::Base
 	def video_name
 		video.name if video
 	end
+	def self.select_options
+  		descendants.map{ |c| c.to_s }.sort
+	end
+	def self.inherited(child)
+  child.instance_eval do
+    def model_name
+      Status.model_name
+    end
+  end
+  super
+	end
 end
