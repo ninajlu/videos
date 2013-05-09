@@ -13,11 +13,12 @@
   <%= @video.track_name %>
 </p>
 <p>
+ <% if @video.statuses.any? %> 
   <b>Status:</b>
   <%= @video.statuses.each do |status| %>
   	<%=status.type%>
 </p>
-
+<%end%>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>
