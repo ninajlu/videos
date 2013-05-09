@@ -1,0 +1,2 @@
+class Editing < Status
+end

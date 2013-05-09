@@ -1,0 +1,2 @@
+class PreComments < Status
+end

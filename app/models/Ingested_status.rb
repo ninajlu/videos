@@ -1,0 +1,2 @@
+class Injested < Status
+end
