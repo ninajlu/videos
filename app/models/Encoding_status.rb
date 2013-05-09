@@ -1,2 +1,0 @@
-class Encoding < Status
-end
