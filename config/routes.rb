@@ -12,7 +12,7 @@ Videos::Application.routes.draw do
 
   resources :tracks
 
-root :to => 'tracks#index'
+root :to => 'videos#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

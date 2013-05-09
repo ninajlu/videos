@@ -60,7 +60,7 @@ class StatusesController < ApplicationController
     @status = Status.find(params[:id])
     respond_to do |format|
       if @status.update_attributes(params[:status])
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+        format.html { redirect_to @status.video, notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
