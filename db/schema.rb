@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509180932) do
+ActiveRecord::Schema.define(:version => 20130509185235) do
 
   create_table "kinds", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20130509180932) do
     t.datetime "updated_at", :null => false
     t.integer  "video_id"
     t.datetime "time_comp"
-    t.string   "kind_name"
     t.integer  "kind_id"
   end
 

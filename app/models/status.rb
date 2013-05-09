@@ -1,10 +1,13 @@
 class Status < ActiveRecord::Base
   belongs_to :video, class_name: 'Video'
-  has_one :kind, class_name: 'Kind'
-  attr_accessible :comment, :completed, :time_comp, :type, :video_id, :video, :kind_name, :kind_id
+  belongs_to :kind, class_name: 'Kind'
+  attr_accessible :comment, :completed, :time_comp, :type, :video_id, :video, :kind_name, :kind_id, :kind
   validates :video_id, presence: true
 	def video_name
 		video.name if video
+	end
+	def kind_name
+		kind.name if kind
 	end
 def self.select_options
   descendants.map{ |c| c.to_s }.sort
