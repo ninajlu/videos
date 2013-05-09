@@ -1,7 +1,6 @@
 class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
-  Video.includes(:statuses)
   def index
     @videos = Video.all
 
@@ -41,9 +40,9 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    @video = Video.includes(:statuses).new(params[:video])
+    @video = Video.new(params[:video])
     Kind.all.each do |f|
-      @video.statuses.build(:kind =>f, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video=>@video, :video_id =>@video.id)
+      @video.statuses.new(:kind =>f, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video_id =>@video.id)
     end
     respond_to do |format|
       if @video.save
