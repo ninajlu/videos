@@ -12,6 +12,11 @@
   <b>Track:</b>
   <%= @video.track_name %>
 </p>
+<p>
+  <b>Status:</b>
+  <%= @video.statuses.each do |status| %>
+  	<%=status.type%>
+</p>
 
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
