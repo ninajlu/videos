@@ -1,6 +1,6 @@
 class Status < ActiveRecord::Base
   belongs_to :video, class_name: 'Video'
-  has_one :kind
+  has_one :kind, class_name: 'Kind'
   attr_accessible :comment, :completed, :time_comp, :type, :video_id, :video, :kind_name, :kind_id
   validates :video_id, presence: true
 	def video_name

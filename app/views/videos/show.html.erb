@@ -13,7 +13,7 @@
   <%= @video.track_name %>
 </p>
 
- <% if @video.statuses.any? %> 
+ <% if @video.statuses!=nil %> 
   <table>
   <tr>
     <th>Type</th>
@@ -28,7 +28,7 @@
 
 <% @video.statuses.each do |status| %>
   <tr>
-    <td><%= status.type %></td>
+    <td><%= status.kind_name %></td>
     <td><%= status.comment %></td>
     <td><%= status.completed %></td>
     <td><%= status.time_comp %></td>

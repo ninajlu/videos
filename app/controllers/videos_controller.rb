@@ -43,7 +43,7 @@ class VideosController < ApplicationController
     @video = Video.new(params[:video])
     @kinds.each do |f|
   @video.statuses.create(:kind =>f.name, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video=>@video, :video_id =>@video.id)
-
+end
     respond_to do |format|
       if @video.save
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
