@@ -36,4 +36,13 @@ end
 			self.time_comp=nil
 		end
 	end
+	def update_complete
+		self.completed=true
+		self.save!
+	end
+	def update_incomplete
+		self.completed=false
+		self.save!
+	end
+
 end
