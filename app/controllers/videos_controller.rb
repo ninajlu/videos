@@ -71,6 +71,20 @@ class VideosController < ApplicationController
     end
   end
 
+  def nested
+    @video = Video.find(params[:id])
+
+    respond_to do |format|
+      if @video.update_attributes(params[:video])
+        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @video.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy

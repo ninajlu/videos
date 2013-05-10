@@ -16,11 +16,10 @@
  <% if @video.statuses %> 
   <table>
   <tr>
-    <th>Type</th>
+    <th>Step</th>
     <th>Comment</th>
     <th>Completed?</th>
     <th>Time Completed</th>
-    <th>Video</th>
     <th></th>
     <th></th>
     <th></th>
@@ -32,7 +31,6 @@
     <td><%= status.comment %></td>
     <td><%= status.completed %></td>
     <td><%= status.time_comp %></td>
-    <td><%= status.video_name %></td>
     <td><%= link_to 'Show', status %></td>
     <td><%= link_to 'Edit', edit_status_path(status) %></td>
     <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,8 +39,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Status', new_status_path %>
 <br/>
   <%else%>
   	<b>No statuses</b>
