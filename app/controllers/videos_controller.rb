@@ -42,7 +42,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(params[:video])
     Kind.all.each do |f|
-      @video.statuses.new(:kind =>f, :kind_id=>f.id,:comment =>"", :time_comp => nil, :completed =>false, :video_id =>@video.id)
+      @video.statuses.new(:kind =>f, :kind_id=>f.id,:progress =>"",:comment =>"", :time_comp => nil, :completed =>false, :video_id =>@video.id)
     end
     respond_to do |format|
       if @video.save

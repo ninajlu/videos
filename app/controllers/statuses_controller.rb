@@ -69,6 +69,7 @@ class StatusesController < ApplicationController
     end
   end
 
+
   # DELETE /statuses/1
   # DELETE /statuses/1.json
   def destroy

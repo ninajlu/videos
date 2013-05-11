@@ -8,7 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:kind_name) %></th>
       <th><%= model_class.human_attribute_name(:comment) %></th>
-      <th><%= model_class.human_attribute_name(:completed) %></th>
+      <th><%= model_class.human_attribute_name(:progress) %></th>
+       <th><%= model_class.human_attribute_name(:completed) %></th>
       <th><%= model_class.human_attribute_name(:time_comp) %></th>
       <th><%= model_class.human_attribute_name(:video_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,6 +21,7 @@
         <td><%= link_to status.id, status_path(status) %></td>
         <td><%= status.kind_name %></td>
         <td><%= status.comment %></td>
+        <td><%= status.progress %></td>
         <td><%= status.completed %></td>
         <td><%= status.time_comp.try(:strftime,"%a, %b %d, %I:%M %p") %></td>
         <td><%= status.video_name %></td>
