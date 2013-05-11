@@ -1,30 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Status -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Step:</b>
-  <%= @status.kind_name %>
-</p>
+<dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:kind_id) %>:</strong></dt>
+  <dd><%= @status.kind_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dd><%= @status.comment %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:completed) %>:</strong></dt>
+  <dd><%= @status.completed %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time_comp) %>:</strong></dt>
+  <dd><%= @status.time_comp.try(:strftime,"%a, %b %d, %I:%M %p") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:video_id) %>:</strong></dt>
+  <dd><%= @status.video_name %></dd>
+</dl>
 
-<p>
-  <b>Comment:</b>
-  <%= @status.comment %>
-</p>
-
-<p>
-  <b>Completed:</b>
-  <%= @status.completed %>
-</p>
-
-<p>
-  <b>Time Completed:</b>
-  <%= @status.time_comp %>
-</p>
-
-<p>
-  <b>Video:</b>
-  <%= @status.video_name %>
-</p>
-
-
-<%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', @status.video%>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              statuses_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_status_path(@status), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              status_path(@status),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

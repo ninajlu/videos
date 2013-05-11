@@ -1,4 +1,4 @@
-<%= form_for(@video) do |f| %>
+<%= form_for @video  do |f| %>
   <% if @video.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
@@ -10,40 +10,44 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+     <div class="controls">
+    <%= f.text_field :name, :class => 'text_field'%>
   </div>
-  <div class="field">
-    <%= f.label :current %><br />
-    <%= f.text_field :current, :disabled=>true%>
+    </div>
+  <div class="control-group">
+    <%= f.label :current, :class => 'control-label' %> <div class="controls">
+    <%= f.text_field :current, :disabled=>true, :class => 'text_field'%>
   </div>
-  <div class="field">
-    <%= f.label :track %><br />
-    <%= f.collection_select :track_id, Track.all, :id, :name %>
+    </div>
+  <div class="control-group">
+    <%= f.label :track, :class => 'control-label' %> <div class="controls">
+    <%= f.collection_select :track_id, Track.all, :id, :name, :class => 'number_field'%>
   </div>
+    </div>
 
   <% @video.statuses.each do |status| %>
      <% new_or_existing = status.new_record? ? 'new' : 'existing' %> 
     <% prefix = "video[#{new_or_existing}_status_attributes][]" %> 
     
     <%= fields_for prefix,status do |status_form| %>
-      <p>
-        <div>
-          <%= status_form.label :kind, 'Step:' %>
-    <%= status_form.collection_select :kind_id, Kind.all, :id, :name%>
-
-
-          <%= status_form.label :completed, 'Status:'%>
-          <%= status_form.check_box :completed %>
+        <div class="row">
+         <div class="span2"> <%= status_form.label :completed, status.kind_name %></div><div class="span1">
+          <%= status_form.check_box :completed %></div><div class="span2">
+          <%= status_form.label :comment%></div><div class="span3">
+          <%=status_form.text_field :comment, :class=>"text_field"%></div>
+   
         </div>
-      </p>
     <% end %>
   <% end %>
 
 
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                videos_path, :class => 'btn' %>
   </div>
 <% end %>

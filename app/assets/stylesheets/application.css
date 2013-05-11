@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.form-condensed .control-group {
+    margin-top: 0;
+    margin-bottom: 5px;
+}

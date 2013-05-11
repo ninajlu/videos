@@ -1,27 +1,39 @@
-<h1>Listing videos</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Current</th>
-    <th>Track</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @videos.each do |video| %>
-  <tr>
-    <td><%=video.name%></td>
-    <td><%= video.current %></td>
-    <td><%= video.track_name %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Video -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+       <th><%= model_class.human_attribute_name(:name) %></th>
+       <th><%= model_class.human_attribute_name(:current) %></th>
+       <th><%= model_class.human_attribute_name(:dateFilmed) %></th>
+       <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:track_id) %></th>
+     <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= link_to video.id, video_path(video) %></td>
+        <td><%= video.name %></td>
+        <td><%= video.current %></td>
+        <td><%= video.dateFilmed.try(:strftime,"%a, %b %d, %I:%M %p") %></td>
+        <td><%= video.location %></td>
+        <td><%= video.track_name %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_video_path(video), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      video_path(video),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Video', new_video_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_video_path,
+            :class => 'btn btn-primary' %>

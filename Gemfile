@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'devise'
+gem "therubyracer", :require => 'v8'
+gem "less-rails"
+gem "simple_form"
+gem "twitter-bootstrap-rails"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development do

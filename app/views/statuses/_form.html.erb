@@ -1,32 +1,33 @@
-<%= form_for(@status) do |f| %>
-  <% if @status.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
-
-      <ul>
-      <% @status.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @status, :html => { :class => 'form_horizontal' } do |f| %>
+    <div class="control-group">
+    <%= f.label :kind, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :kind_id, Kind.all, :id, :name, :class => 'number_field' %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :kind %><br />
-    <%= f.collection_select :kind_id, Kind.all, :id, :name %>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comment, :class => 'text_area' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :completed %><br />
-    <%= f.check_box :completed %>
+  <div class="control-group">
+    <%= f.label :completed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :completed, :class => 'check_box' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :video %><br />
-    <%= f.collection_select :video_id, Video.all, :id, :name %>
+  <div class="control-group">
+    <%= f.label :video, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :video_id, Video.all, :id, :name, :class => 'number_field' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                statuses_path, :class => 'btn' %>
   </div>
 <% end %>
