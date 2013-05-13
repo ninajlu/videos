@@ -34,11 +34,12 @@
     
     <%= fields_for prefix,status do |status_form| %>
         <div class="row">
-         <div class="span2"> <%= status_form.label :completed, status.kind_name %></div><div class="span1">
+         <div class="span2"> <%= status_form.label :completed, status.kind_name %></div>
+         <div class="span1">
           <%= status_form.check_box :completed %></div>
 <div class="span1">
      <%= status_form.select :progress, ["","Copying","Processing","DONE","ISSUE"],:class => 'number_field' %></div>
-          <%= status_form.label :comment%></div><div class="span3">
+          <div class="span3">
           <%=status_form.text_field :comment, :class=>"text_field"%></div>
    
         </div>
