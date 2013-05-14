@@ -16,17 +16,26 @@
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
-
-  <div class="control-group">
-    <%= f.label :current, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :current, :disable=> true, :class => 'text_field' %>
-    </div>
-  </div>
       <div class="control-group">
     <%= f.label :dateFilmed, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_select :dateFilmed%>
+<div class="well">
+  <div id="datetimepicker1" class="input-append date">
+    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" id="video_dateFilmed" name="video[dateFilmed]"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
+</script>
+
 
     </div>
   </div>
